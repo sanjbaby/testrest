@@ -8,7 +8,7 @@ import functools
 app = Flask(__name__)
 api = Api(app)
 
-client = MongoClient("mongodb://my_db:27017")
+client = MongoClient("mongodb://sampledb:27017")
 db = client.projectDB
 users = db["Users"]
 
