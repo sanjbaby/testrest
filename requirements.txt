@@ -1,4 +1,1 @@
-Flask
-flask_restful
-pymongo
-bcrypt
+Flask==0.10.1

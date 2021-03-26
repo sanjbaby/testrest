@@ -1,14 +1,18 @@
-# Pull python 3 image
-FROM python:3
-# Create a work dir
-#WORKDIR /usr/src/app
-# copy requirements.txt into workdir created above
-COPY requirements.txt ./
-# Install all requirements
-RUN python3 -m pip install --user --no-cache-dir -r requirements.txt
-# Copy entire project into workdir
-COPY . .
-# Run our app without output
-CMD ["python", "app.py"] 
+# start from base
+FROM ubuntu:18.04
+LABEL maintainer="sanjbaby"
 
+RUN apt-get update -y && \
+    apt-get install -y python-pip python-dev
 
+# We copy just the requirements.txt first to leverage Docker cache
+
+COPY ./requirements.txt /app/requirements.txt
+
+WORKDIR /app
+
+RUN pip install -r requirements.txt
+
+COPY . /app
+
+CMD [ "python", "./app.py" ]
