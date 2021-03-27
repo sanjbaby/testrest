@@ -2,7 +2,7 @@ from flask import Flask, request, jsonify
 from flask_pymongo import PyMongo
 from bson.objectid import ObjectId
 import socketapp = Flask(__name__)
-app.config["MONGO_URI"] = "mongodb://mongo:27017/dev"
+app.config["MONGO_URI"] = "mongodb://mongo:27017/sampledb"
 mongo = PyMongo(app)
 db = mongo.db@app.route("/")
 def index():
