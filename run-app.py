@@ -25,8 +25,7 @@ def get_all_tasks():
             "task": task["task"]
         }
         data.append(item)
-    return jsonify(
-        data=data
+    return jsonify(data=data)
     
 
 if __name__ == '__main__':
